@@ -1,8 +1,9 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-
-@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
@@ -47,6 +48,7 @@
 }
 
 :root {
+  color-scheme: light;
   --radius: 0.625rem;
 
   /* 라이트 모드 (OKLCH) */
@@ -89,6 +91,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   /* 다크 모드 (OKLCH) */
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -124,27 +127,18 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-* {
-  @apply border-border;
-}
-
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  @apply bg-background text-foreground;
-  font-feature-settings: "rounding-mode" 0;
-}
-
 @layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   * {
     @apply border-border outline-ring/50;
-    @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
-    @apply bg-background text-foreground;
+    font-feature-settings: "rounding-mode" 0;
   }
 }
